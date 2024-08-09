@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Successful{% endblock %}
+
+{% block content %}
+<style>
+    .payment-success-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 70vh;
+        text-align: center;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-success-container h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #28a745;
+    }
+
+    .payment-success-container p {
+        font-size: 1.2em;
+        color: #555;
+    }
+
+    .payment-success-icon {
+        font-size: 4em;
+        color: #28a745;
+        margin-bottom: 20px;
+    }
+
+    .btn-home {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-home:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="payment-success-container">
+    <div class="payment-success-icon">&#10003;</div>
+    <h1>Your payment was successful</h1>
+    <p>Your payment has been processed successfully.</p>
+
+</div>
+
+{% endblock %}

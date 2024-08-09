@@ -1,0 +1,279 @@
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{#<div class="container mt-5">#}
+{#    <h1 class="display-4 mb-4">Chat with Me</h1>#}
+{#    <div id="chat-log" class="border rounded p-4 h-64 overflow-auto"></div>#}
+{#    <form id="chat-form" class="mt-4">#}
+{#        <div class="form-group">#}
+{#            <input id="chat-name-input" type="text" placeholder="Enter your name or email" class="form-control mb-2">#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <input id="chat-message-input" type="text" placeholder="Enter your message" class="form-control mb-2">#}
+{#        </div>#}
+{#        <button id="chat-message-submit" type="submit" class="btn btn-primary">Send</button>#}
+{#    </form>#}
+{#</div>#}
+{#<script>#}
+{#    document.addEventListener('DOMContentLoaded', () => {#}
+{#        const roomName = "personal_chat_room";  // Since it's static#}
+{#        const chatSocket = new WebSocket(#}
+{#            'ws://' + window.location.host + '/ws/chat/' + roomName + '/'#}
+{#        );#}
+{##}
+{#        chatSocket.onopen = function(e) {#}
+{#            console.log('WebSocket connection established');#}
+{#        };#}
+{##}
+{#        chatSocket.onerror = function(e) {#}
+{#            console.error('WebSocket connection error:', e);#}
+{#        };#}
+{##}
+{#        chatSocket.onmessage = function(e) {#}
+{#            const data = JSON.parse(e.data);#}
+{#            const chatLog = document.getElementById('chat-log');#}
+{#            const newMessage = document.createElement('div');#}
+{#            newMessage.className = 'my-2 p-2 border rounded bg-light';#}
+{#            newMessage.innerHTML = `<strong>${data.name}:</strong> ${data.message}`;#}
+{#            chatLog.appendChild(newMessage);#}
+{#            chatLog.scrollTop = chatLog.scrollHeight;#}
+{#        };#}
+{##}
+{#        chatSocket.onclose = function(e) {#}
+{#            console.error('Chat socket closed unexpectedly');#}
+{#        };#}
+{##}
+{#        document.getElementById('chat-form').onsubmit = function(e) {#}
+{#            e.preventDefault();#}
+{#            const nameInput = document.getElementById('chat-name-input');#}
+{#            const messageInput = document.getElementById('chat-message-input');#}
+{#            const name = nameInput.value;#}
+{#            const message = messageInput.value;#}
+{##}
+{#            if (name && message) {#}
+{#                chatSocket.send(JSON.stringify({#}
+{#                    'name': name,#}
+{#                    'message': message#}
+{#                }));#}
+{##}
+{#                messageInput.value = '';#}
+{#            }#}
+{#        };#}
+{#    });#}
+{#</script>#}
+{#{% endblock %}#}
+
+
+{#second#}
+
+{##}
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{#<style>#}
+{#    #chat-log {#}
+{#        background-color: #f8f9fa;#}
+{#        max-height: 400px;#}
+{#        height: 400px; /* Ensure a consistent height */#}
+{#    }#}
+{#    #chat-log .message {#}
+{#        padding: 10px;#}
+{#        margin-bottom: 10px;#}
+{#        border-radius: 10px;#}
+{#    }#}
+{#    #chat-log .message strong {#}
+{#        color: #007bff;#}
+{#    }#}
+{#    #chat-log .message.self {#}
+{#        background-color: #e9ecef;#}
+{#        text-align: right;#}
+{#    }#}
+{#    #chat-log .message.other {#}
+{#        background-color: #ffffff;#}
+{#        text-align: left;#}
+{#    }#}
+{#    #chat-form .form-control {#}
+{#        border-radius: 20px;#}
+{#    }#}
+{#    #chat-form .btn {#}
+{#        border-radius: 20px;#}
+{#    }#}
+{#</style>#}
+{#<div class="container mt-5">#}
+{#    <h1 class="display-4 mb-4 text-center">Chat with Me</h1>#}
+{#    <div id="chat-log" class="border rounded p-4 h-64 overflow-auto"></div>#}
+{#    <form id="chat-form" class="mt-4">#}
+{#        <div class="form-group">#}
+{#            <input id="chat-name-input" type="text" placeholder="Enter your name or email" class="form-control mb-2">#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <input id="chat-message-input" type="text" placeholder="Enter your message" class="form-control mb-2">#}
+{#        </div>#}
+{#        <button id="chat-message-submit" type="submit" class="btn btn-primary btn-block">Send</button>#}
+{#    </form>#}
+{#</div>#}
+{#<script>#}
+{#    document.addEventListener('DOMContentLoaded', () => {#}
+{#        const roomName = "personal_chat_room";  // Since it's static#}
+{#        const chatSocket = new WebSocket(#}
+{#            'ws://' + window.location.host + '/ws/chat/' + roomName + '/'#}
+{#        );#}
+{##}
+{#        chatSocket.onopen = function(e) {#}
+{#            console.log('WebSocket connection established');#}
+{#        };#}
+{##}
+{#        chatSocket.onerror = function(e) {#}
+{#            console.error('WebSocket connection error:', e);#}
+{#        };#}
+{##}
+{#        chatSocket.onmessage = function(e) {#}
+{#            const data = JSON.parse(e.data);#}
+{#            const chatLog = document.getElementById('chat-log');#}
+{#            const newMessage = document.createElement('div');#}
+{#            newMessage.className = 'message border rounded bg-light';#}
+{#            newMessage.innerHTML = `<strong>${data.name}:</strong> ${data.message}`;#}
+{#            chatLog.appendChild(newMessage);#}
+{#            chatLog.scrollTop = chatLog.scrollHeight;#}
+{#        };#}
+{##}
+{#        chatSocket.onclose = function(e) {#}
+{#            console.error('Chat socket closed unexpectedly');#}
+{#        };#}
+{##}
+{#        document.getElementById('chat-form').onsubmit = function(e) {#}
+{#            e.preventDefault();#}
+{#            const nameInput = document.getElementById('chat-name-input');#}
+{#            const messageInput = document.getElementById('chat-message-input');#}
+{#            const name = nameInput.value;#}
+{#            const message = messageInput.value;#}
+{##}
+{#            if (name && message) {#}
+{#                chatSocket.send(JSON.stringify({#}
+{#                    'name': name,#}
+{#                    'message': message#}
+{#                }));#}
+{##}
+{#                // Assuming messages sent by the user should be styled differently#}
+{#                const chatLog = document.getElementById('chat-log');#}
+{#                const newMessage = document.createElement('div');#}
+{#                newMessage.className = 'message self';#}
+{#                newMessage.innerHTML = `<strong>${name}:</strong> ${message}`;#}
+{#                chatLog.appendChild(newMessage);#}
+{#                chatLog.scrollTop = chatLog.scrollHeight;#}
+{##}
+{#                messageInput.value = '';#}
+{#            }#}
+{#        };#}
+{#    });#}
+{#</script>#}
+{#{% endblock %}#}
+
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    #chat-log {
+        background-color: #f8f9fa;
+        max-height: 400px;
+        height: 400px; /* Ensure a consistent height */
+        overflow-y: auto;
+    }
+    #chat-log .message {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        max-width: 70%;
+        word-wrap: break-word;
+    }
+    #chat-log .message strong {
+        color: #007bff;
+    }
+    #chat-log .message.self {
+        background-color: #e9ecef;
+        text-align: right;
+        margin-left: auto;
+    }
+    #chat-log .message.other {
+        background-color: #ffffff;
+        text-align: left;
+        margin-right: auto;
+    }
+    #chat-form .form-control {
+        border-radius: 20px;
+    }
+    #chat-form .btn {
+        border-radius: 20px;
+    }
+</style>
+<div class="container mt-5">
+    <h1 class="display-4 mb-4 text-center">Chat with Owner</h1>
+    <div id="chat-log" class="border rounded p-4 h-64 overflow-auto"></div>
+    <form id="chat-form" class="mt-4">
+        <div class="form-group">
+            <input id="chat-name-input" type="text" placeholder="Enter your name or email" class="form-control mb-2">
+        </div>
+        <div class="form-group">
+            <input id="chat-message-input" type="text" placeholder="Enter your message" class="form-control mb-2">
+        </div>
+        <button id="chat-message-submit" type="submit" class="btn btn-primary btn-block">Send</button>
+    </form>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const roomName = "personal_chat_room";  // Since it's static
+        const chatSocket = new WebSocket(
+            'ws://' + window.location.host + '/ws/chat/' + roomName + '/'
+        );
+
+        let username = '';
+
+        chatSocket.onopen = function(e) {
+            console.log('WebSocket connection established');
+        };
+
+        chatSocket.onerror = function(e) {
+            console.error('WebSocket connection error:', e);
+        };
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const chatLog = document.getElementById('chat-log');
+            const newMessage = document.createElement('div');
+            newMessage.className = 'message border rounded bg-light';
+
+            // Check if the message is from the current user
+            if (data.name === username) {
+                newMessage.classList.add('self');
+            } else {
+                newMessage.classList.add('other');
+            }
+
+            newMessage.innerHTML = `<strong>${data.name}:</strong> ${data.message}`;
+            chatLog.appendChild(newMessage);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.getElementById('chat-form').onsubmit = function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('chat-name-input');
+            const messageInput = document.getElementById('chat-message-input');
+            username = nameInput.value;
+            const message = messageInput.value;
+
+            if (username && message) {
+                chatSocket.send(JSON.stringify({
+                    'name': username,
+                    'message': message
+                }));
+
+                messageInput.value = '';
+            }
+        };
+    });
+</script>
+{% endblock %}

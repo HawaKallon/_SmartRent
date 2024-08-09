@@ -1,0 +1,99 @@
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{##}
+{##}
+{##}
+{#{% block content %}#}
+{#    <h1>Your Shopping Cart</h1>#}
+{#    <table class="cart" id="cart-table">#}
+{#    <thead>#}
+{#    <tr>#}
+{#        <th>Image</th>#}
+{#        <th>Product</th>#}
+{#        <th>Year</th>#}
+{#        <th>Remove</th>#}
+{#        <th>Unit Price</th>#}
+{#        <th>Price</th>#}
+{#    </tr>#}
+{#    </thead>#}
+{#    <tbody>#}
+{#    {% for item in cart %}#}
+{#       {% with product=item.product %}#}
+{#         <tr>#}
+{#             <td>#}
+{#                 <a href="{{ product.get_absolute_url }}">#}
+{#                     <img src="{% if home_detail.Image %}{{ home_detail.Image.url }}">#}
+{#                     {% else %}{% static "img/no_image.png" %}{% endif %}">#}
+{#                 </a>#}
+{#             </td>#}
+{#         <td>{{ product.name }}</td>#}
+{#         <td>#}
+{#             <form action="{% url "cart:cart_add" product.id %}" method="post" class="update-quantity-form">#}
+{#                 {{ item.update_quantity_form.quantity }}#}
+{#                 {{ item.update_quantity_form.override }}#}
+{#                 <input type="submit" value="Update" class="update-quantity-button">#}
+{#                 {% csrf_token %}#}
+{#             </form>#}
+{#         </td>#}
+{#         <td>#}
+{#             <form action="{% url "cart:cart_remove" product_id=item.product.id %}" method="post" class="remove-item-form">#}
+{#                 <input type="submit" value="Remove" class="remove-item-button">#}
+{#                 {% csrf_token %}#}
+{#             </form>#}
+{#         </td>#}
+{#         <td class="num unit-price">${{ item.price }}</td>#}
+{#         <td class="num total-price">${{ item.total_price }}</td>#}
+{#         </tr>#}
+{#    {% endwith %}#}
+{#    {% endfor %}#}
+{#    {% if cart.coupon %}#}
+{#    <tr class="subtotal">#}
+{#        <td>Subtotal</td>#}
+{#        <td colspan="4"></td>#}
+{#        <td class="num">${{ cart.get_total_price | floatformat:2 }}</td>#}
+{#    </tr>#}
+{##}
+{#    {% endif %}#}
+{##}
+{#    </tbody>#}
+{#    </table>#}
+{##}
+{##}
+{#{% endblock %}#}
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Booking</h1>
+    <table class="table table-bordered" id="cart-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Owner</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>Rent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="{{ item.property.get_absolute_url }}">
+                        <img src="{% if home_detail.Image %}{{ home_detail.Image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="{{ item.property.name }}" width="100">
+                    </a>
+                </td>
+                <td>{{home_detail.First_Name}} {{ home_detail.Last_Name }}</td>
+             <td>{{ home_detail.Street1 }}</td>
+                <td>{{ home_detail.City }}</td>
+
+
+                <td class="num unit-price">Le{{ home_detail.Rent}}</td>
+            </tr>
+        </tbody>
+    </table>
+<a href="{% url 'payment:process' %}" class="btn btn-primary" style="align-items: end">Proceed to Payment</a>
+
+</div>
+{% endblock %}

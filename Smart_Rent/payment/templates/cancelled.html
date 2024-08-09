@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Canceled{% endblock %}
+
+{% block content %}
+<style>
+    .payment-canceled-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        background-color: #f8d7da;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-canceled-container h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #721c24;
+    }
+
+    .payment-canceled-container p {
+        font-size: 1.2em;
+        color: #555;
+    }
+
+    .payment-canceled-icon {
+        font-size: 4em;
+        color: #721c24;
+        margin-bottom: 20px;
+    }
+
+    .btn-retry {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-retry:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="payment-canceled-container">
+    <div class="payment-canceled-icon">&#10060;</div>
+    <h1>Your payment has not been processed</h1>
+    <p>There was a problem processing your payment.</p>
+
+</div>
+
+{% endblock %}

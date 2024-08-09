@@ -1,0 +1,341 @@
+{#{% extends "base.html" %}#}
+{#{% load static %}#}
+{##}
+{#{% block title %}#}
+{#Signup#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#<!-- <div class="container" style="max-width: 500px; margin-top: 50px; border: 2px solid #000; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);">#}
+{#    <h1 class="text-center mb-4">Signup</h1>#}
+{#    <form method="POST">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <div class="form-group">#}
+{#            <button type="submit" class="btn btn-block" style="background-color: #000; color: #fff; border: none; width: 100%; padding: 10px; border-radius: 5px;">Signup</button>#}
+{#        </div>#}
+{#        <div class="text-center" style="margin-top: 10px;">#}
+{#            <a href="{% url 'login_page' %}" style="color: #000; text-decoration: none;">Already have an account?</a>#}
+{#        </div>#}
+{#    </form>#}
+{#</div> -->#}
+{##}
+{##}
+{#<div#}
+{#    style="width: 100%; height: 100%; background: linear-gradient(0deg, white 0%, white 100%), linear-gradient(0deg, white 0%, white 100%); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">#}
+{#    <div style="align-self: stretch; height: 1200px; background: #212832"></div>#}
+{#    <div#}
+{#        style="width: 1920px; height: 63px; padding-top: 8px; padding-bottom: 11px; background: white; border-bottom: 3px #DC392D solid; flex-direction: column; justify-content: center; align-items: center; display: flex">#}
+{#        <div#}
+{#            style="width: 1920px; flex: 1 1 0; flex-direction: column; justify-content: center; align-items: flex-start; display: flex">#}
+{#            <div#}
+{#                style="align-self: stretch; flex: 1 1 0; justify-content: space-between; align-items: center; display: inline-flex">#}
+{#                <div#}
+{#                    style="flex: 1 1 0; padding-left: 12px; padding-right: 12px; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">#}
+{#                    <div#}
+{#                        style="padding-left: 13px; padding-right: 13px; padding-top: 9px; padding-bottom: 9px; border-radius: 4px; justify-content: center; align-items: center; display: inline-flex">#}
+{#                        <div#}
+{#                            style="padding-right: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">#}
+{#                            <div#}
+{#                                style="padding-bottom: 1.75px; flex-direction: column; justify-content: flex-start; align-items: center; display: flex">#}
+{#                                <div style="width: 9.19px; height: 10.50px; position: relative">#}
+{#                                    <div#}
+{#                                        style="width: 9.19px; height: 7.87px; left: 0px; top: 1.31px; position: absolute; background: rgba(33, 40, 50, 0.50)">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div#}
+{#                            style="flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">#}
+{#                            <div#}
+{#                                style="text-align: center; color: rgba(33, 40, 50, 0.50); font-size: 12px; font-family: Roboto; font-weight: 400; line-height: 12px; word-wrap: break-word">#}
+{#                                Overview Page</div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div#}
+{#                    style="padding-left: 12px; padding-right: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">#}
+{#                    <div#}
+{#                        style="align-self: stretch; justify-content: center; align-items: flex-start; display: inline-flex">#}
+{#                        <div#}
+{#                            style="width: 52px; height: 44px; padding-left: 4px; padding-right: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">#}
+{#                            <div#}
+{#                                style="width: 44px; height: 44px; padding-top: 14.38px; padding-bottom: 14.37px; padding-left: 14.13px; padding-right: 14.12px; background: rgba(33, 40, 50, 0.20); border-radius: 44px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">#}
+{#                                <div#}
+{#                                    style="padding-bottom: 1.25px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">#}
+{#                                    <div style="width: 15.75px; height: 14px; position: relative">#}
+{#                                        <div#}
+{#                                            style="width: 15.75px; height: 14px; left: 0px; top: 0px; position: absolute; background: rgba(33, 40, 50, 0.50)">#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div#}
+{#                            style="width: 52px; height: 44px; padding-left: 4px; padding-right: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">#}
+{#                            <div#}
+{#                                style="width: 44px; height: 44px; padding-top: 14.38px; padding-bottom: 14.37px; padding-left: 15.88px; padding-right: 15.87px; border-radius: 44px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">#}
+{#                                <div#}
+{#                                    style="padding-bottom: 1.25px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">#}
+{#                                    <div style="width: 12.25px; height: 14px; position: relative">#}
+{#                                        <div#}
+{#                                            style="width: 12.25px; height: 14px; left: 0px; top: 0px; position: absolute; background: rgba(33, 40, 50, 0.50)">#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div#}
+{#                            style="width: 52px; height: 44px; padding-left: 4px; padding-right: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">#}
+{#                            <div#}
+{#                                style="width: 44px; height: 44px; padding-top: 14.38px; padding-bottom: 14.37px; padding-left: 16.75px; padding-right: 16.75px; border-radius: 44px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">#}
+{#                                <div#}
+{#                                    style="padding-bottom: 1.25px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">#}
+{#                                    <div style="width: 10.50px; height: 14px; position: relative">#}
+{#                                        <div#}
+{#                                            style="width: 8.75px; height: 14px; left: 0.88px; top: 0px; position: absolute; background: rgba(33, 40, 50, 0.50)">#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div#}
+{#                    style="flex: 1 1 0; height: 31px; padding-left: 644.27px; padding-right: 12px; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">#}
+{#                    <div#}
+{#                        style="padding-left: 13px; padding-right: 13px; padding-top: 9px; padding-bottom: 9px; border-radius: 4px; justify-content: center; align-items: center; display: flex">#}
+{#                        <div#}
+{#                            style="padding-bottom: 1px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">#}
+{#                            <div style="width: 11.63px; height: 12px; position: relative">#}
+{#                                <div#}
+{#                                    style="width: 11.63px; height: 11.33px; left: 0px; top: 0.19px; position: absolute; background: #333333">#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div#}
+{#                        style="padding-left: 13px; padding-right: 13px; padding-top: 9px; padding-bottom: 9px; background: #F0E3E7; border-radius: 4px; border: 1px #F0E3E7 solid; justify-content: flex-start; align-items: flex-end; gap: 4px; display: flex">#}
+{#                        <div#}
+{#                            style="padding-bottom: 1px; justify-content: flex-end; align-items: flex-start; display: flex">#}
+{#                            <div style="width: 12px; height: 12px; position: relative">#}
+{#                                <div style="width: 12px; height: 12px; left: 0px; top: 0px; position: absolute">#}
+{#                                    <div#}
+{#                                        style="width: 12px; height: 3.75px; left: 0px; top: 8.25px; position: absolute; opacity: 0.40; background: #DC392D">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 7.50px; height: 9.75px; left: 2.25px; top: 0px; position: absolute; background: #DC392D">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div#}
+{#                            style="text-align: center; color: #DC392D; font-size: 12px; font-family: Roboto; font-weight: 400; line-height: 12px; word-wrap: break-word">#}
+{#                            Free Download</div>#}
+{#                    </div>#}
+{#                    <div#}
+{#                        style="width: 30px; height: 30px; padding-left: 10.50px; padding-right: 10.50px; padding-top: 8.50px; padding-bottom: 8.50px; border-radius: 30px; overflow: hidden; justify-content: center; align-items: center; display: flex">#}
+{#                        <div#}
+{#                            style="padding-bottom: 1px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">#}
+{#                            <div style="width: 9px; height: 12px; position: relative">#}
+{#                                <div#}
+{#                                    style="width: 7.49px; height: 7.49px; left: 0.76px; top: 2.26px; position: absolute; background: rgba(33, 40, 50, 0.50)">#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div style="width: 1920px; padding-top: 63px; justify-content: center; align-items: center; display: inline-flex">#}
+{#        <div#}
+{#            style="flex: 1 1 0; align-self: stretch; background: white; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">#}
+{#            <div#}
+{#                style="background-image: url(https://via.placeholder.com/2021x1137); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">#}
+{#                <div#}
+{#                    style="align-self: stretch; height: 1137px; flex-direction: column; justify-content: flex-end; align-items: center; display: flex">#}
+{#                    <div style="width: 2021.32px; flex: 1 1 0"></div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div style="width: 1920px; height: 1137px; opacity: 0.70; background: #2A5555"></div>#}
+{#            <div#}
+{#                style="width: 1248px; flex: 1 1 0; padding-left: 304px; padding-right: 304px; padding-top: 400.51px; padding-bottom: 400.51px; justify-content: center; align-items: center; display: inline-flex">#}
+{#                <div style="width: 1248px; height: 1151.17px; background: rgba(0, 0, 0, 0.85)"></div>#}
+{#                <div#}
+{#                    style="padding-left: 32px; padding-right: 144px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">#}
+{#                    <div#}
+{#                        style="height: 336.99px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 24px; display: flex">#}
+{#                        <div#}
+{#                            style="align-self: stretch; height: 112px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">#}
+{#                            <div#}
+{#                                style="align-self: stretch; color: white; font-size: 56px; font-family: Tinos; font-style: italic; font-weight: 700; line-height: 56px; word-wrap: break-word">#}
+{#                                Our Website is<br />Coming Soon</div>#}
+{#                        </div>#}
+{#                        <div#}
+{#                            style="align-self: stretch; height: 94px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">#}
+{#                            <div#}
+{#                                style="align-self: stretch; color: white; font-size: 20.80px; font-family: DM Sans; font-weight: 400; line-height: 31.20px; word-wrap: break-word">#}
+{#                                We're working hard to finish the development of<br />this site. Sign up below to receive#}
+{#                                updates and<br />to be notified when we launch!</div>#}
+{#                        </div>#}
+{#                        <div#}
+{#                            style="width: 488px; padding-top: 23.99px; justify-content: flex-start; align-items: flex-start; display: inline-flex">#}
+{#                            <div#}
+{#                                style="flex: 1 1 0; align-self: stretch; padding-top: 1px; padding-bottom: 1.40px; padding-left: 13px; padding-right: 13px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">#}
+{#                                <div#}
+{#                                    style="align-self: stretch; height: 56px; padding-left: 16px; padding-right: 16px; padding-top: 17.50px; padding-bottom: 17.50px; background: white; border-radius: 6px; border: 1px #CED4DA solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">#}
+{#                                    <div#}
+{#                                        style="align-self: stretch; height: 21px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">#}
+{#                                        <div#}
+{#                                            style="align-self: stretch; color: #6C757D; font-size: 16px; font-family: DM Sans; font-weight: 400; word-wrap: break-word">#}
+{#                                            Enter email address...</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div#}
+{#                                style="align-self: stretch; padding-left: 12px; padding-right: 12px; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">#}
+{#                                <div#}
+{#                                    style="padding: 19px; opacity: 0.65; background: #2A5555; border-radius: 6px; border: 1px #2A5555 solid; justify-content: flex-start; align-items: center; display: inline-flex">#}
+{#                                    <div#}
+{#                                        style="text-align: center; color: white; font-size: 13.60px; font-family: DM Sans; font-weight: 700; text-transform: uppercase; line-height: 20.40px; letter-spacing: 1px; word-wrap: break-word">#}
+{#                                        Notify Me!</div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div#}
+{#                style="width: 96px; height: 1137px; flex-direction: column; justify-content: center; align-items: flex-start; display: flex">#}
+{#                <div#}
+{#                    style="align-self: stretch; flex: 1 1 0; padding-top: 424.50px; padding-bottom: 424.50px; flex-direction: column; justify-content: center; align-items: center; display: flex">#}
+{#                    <div#}
+{#                        style="width: 96px; height: 96px; padding: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">#}
+{#                        <div#}
+{#                            style="width: 64px; height: 64px; padding: 24px; background: black; border-radius: 1600px; border: 1px black solid; justify-content: center; align-items: center; display: inline-flex">#}
+{#                            <div style="width: 16px; height: 16px; position: relative">#}
+{#                                <div#}
+{#                                    style="width: 15.47px; height: 15.47px; left: 0.27px; top: 0.27px; position: absolute">#}
+{#                                    <div#}
+{#                                        style="width: 15.47px; height: 15.47px; left: 0px; top: 0px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 1.75px; height: 1.75px; left: 6.86px; top: 10.23px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 5.97px; height: 6.25px; left: 4.80px; top: 3.23px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 1.47px; height: 6px; left: 7px; top: 3.55px; position: absolute; opacity: 0; background: white">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div#}
+{#                        style="width: 96px; height: 96px; padding: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">#}
+{#                        <div#}
+{#                            style="width: 64px; height: 64px; padding: 24px; background: black; border-radius: 1600px; border: 1px black solid; justify-content: center; align-items: center; display: inline-flex">#}
+{#                            <div style="width: 16px; height: 16px; position: relative">#}
+{#                                <div#}
+{#                                    style="width: 15.47px; height: 15.47px; left: 0.27px; top: 0.27px; position: absolute">#}
+{#                                    <div#}
+{#                                        style="width: 15.47px; height: 15.47px; left: 0px; top: 0px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 1.75px; height: 1.75px; left: 6.86px; top: 10.23px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 5.97px; height: 6.25px; left: 4.80px; top: 3.23px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 1.47px; height: 6px; left: 7px; top: 3.55px; position: absolute; opacity: 0; background: white">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div#}
+{#                        style="width: 96px; height: 96px; padding: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">#}
+{#                        <div#}
+{#                            style="width: 64px; height: 64px; padding: 24px; background: black; border-radius: 1600px; border: 1px black solid; justify-content: center; align-items: center; display: inline-flex">#}
+{#                            <div style="width: 16px; height: 16px; position: relative">#}
+{#                                <div#}
+{#                                    style="width: 15.47px; height: 15.47px; left: 0.27px; top: 0.27px; position: absolute">#}
+{#                                    <div#}
+{#                                        style="width: 15.47px; height: 15.47px; left: 0px; top: 0px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 1.75px; height: 1.75px; left: 6.86px; top: 10.23px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 5.97px; height: 6.25px; left: 4.80px; top: 3.23px; position: absolute; background: white">#}
+{#                                    </div>#}
+{#                                    <div#}
+{#                                        style="width: 1.47px; height: 6px; left: 7px; top: 3.55px; position: absolute; opacity: 0; background: white">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#{% endblock %}#}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container-fluid h-screen bg-white font-family-karla" style="height: 80%">
+  <div class="row">
+    <!-- Login Section -->
+    <div class="col-md-6 d-flex flex-column justify-content-center" style="margin-bottom: 10%; ">
+      <div class="d-flex justify-content-center pt-5">
+        <!-- Replace with your logo or brand image -->
+        <a href="#" class="p-4 text-xl font-bold text-black bg-black">SmartRent</a>
+      </div>
+
+      <div class="px-4 pt-8 pt-md-8 pb-4 mx-auto">
+        <h1 class="text-center ">Welcome.</h1>
+
+        <form method="post" class="pt-3" style="width: 80%;  line-height: 240%">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+          <input
+            type="submit"
+            value="Sign up"
+            class="btn btn-lg btn-block btn-primary mt-4"
+          />
+        </form>
+
+        <div class="pt-4 pb-4 text-left">
+          <p>Already have an account? <a href="{% url 'login_page' %}" class="font-weight-bold">Log in.</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="col-md-6 d-none d-md-block">
+      <!-- Replace with your image -->
+      <img class="img-fluid" src="{% static 'img/bg.jpg' %}" alt="" style="height: 90%">
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container" style="margin:auto;" >
+
+  <div class="row">
+    <div class="col-md-4 ">
+        <img src="{{home_detail.Image.url}}" style="width: 100%;
+            max-height: 300px;"class="img-fluid" alt="...">
+    </div>
+    <div class="col-md-6">
+        <h2>Description</h2>
+        <p>{{home_detail.Description}}</p>
+    </div>
+</div>
+<div class="container mt-5">
+  <div class="row" style="line-height: 1;">
+
+      <div class="col-md-4 info-section">
+          <h2>Features</h2>
+          <p>Amount: Le {{home_detail.Rent}}</p>
+          <p>Number of rooms: {{home_detail.Number_Of_People_Allowed}}</p>
+          <p>Main gate will close at: {{home_detail.Gate_closing_time}} pm</p>
+          <p>{{home_detail.Feature1}}</p>
+          <p>{{home_detail.Feature2}}</p>
+      </div>
+
+
+      <div class="col-md-4 info-section">
+          <h2>Address</h2>
+          <p>{{home_detail.Street1}}</p>
+          <p>{{home_detail.Street2}}</p>
+          <p>{{home_detail.City}}</p>
+          <br>
+          <br>
+            <a href="{% url 'chat:chat_room' %}" class="btn btn-primary">Chat with Owner</a>
+      </div>
+
+
+      <div class="col-md-4 contact-section">
+          <h2>Contact Via</h2>
+          <p>Owner: {{home_detail.First_Name}} {{home_detail.Last_Name}}</p>
+          <p>Mobile: {{home_detail.Contact}}</p>
+          <p>Email: {{home_detail.Email}}</p>
+          <p>You can visit {{home_detail.Visiting_day}} between {{home_detail.Visiting_Start}} and {{home_detail.Visiting_End}}</p>
+       <a href="{{ cart_url }}" class="btn btn-primary">Book this house</a>
+
+      </div>
+  </div>
+</div>
+
+
+
+  </div>
+
+{% endblock %}

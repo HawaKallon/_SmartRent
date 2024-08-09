@@ -1,0 +1,510 @@
+{#{% extends "base.html" %}#}
+{#{% load static %}#}
+{##}
+{#{% block title %}Pay for your Booking{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#<style>#}
+{#    .cart {#}
+{#        width: 100%;#}
+{#        border-collapse: collapse;#}
+{#        margin: 20px 0;#}
+{#        font-size: 1em;#}
+{#        text-align: left;#}
+{#    }#}
+{##}
+{#    .cart thead tr {#}
+{#        background-color: #f2f2f2;#}
+{#        color: #333;#}
+{#    }#}
+{##}
+{#    .cart th, .cart td {#}
+{#        padding: 12px 15px;#}
+{#        border: 1px solid #ddd;#}
+{#    }#}
+{##}
+{#    .cart tbody tr:nth-of-type(even) {#}
+{#        background-color: #f9f9f9;#}
+{#    }#}
+{##}
+{#    .cart tbody tr:hover {#}
+{#        background-color: #f1f1f1;#}
+{#    }#}
+{##}
+{#    .cart img {#}
+{#        width: 100px;#}
+{#        height: auto;#}
+{#        border-radius: 5px;#}
+{#    }#}
+{##}
+{#    .cart .num {#}
+{#        text-align: right;#}
+{#    }#}
+{##}
+{#    .cart .total {#}
+{#        font-weight: bold;#}
+{#        font-size: 1.2em;#}
+{#    }#}
+{##}
+{#    .cart .subtotal {#}
+{#        font-weight: bold;#}
+{#    }#}
+{##}
+{#    .btn-pay {#}
+{#        display: block;#}
+{#        width: 100%;#}
+{#        padding: 15px;#}
+{#        background-color: #007bff;#}
+{#        color: white;#}
+{#        border: none;#}
+{#        border-radius: 5px;#}
+{#        font-size: 1.2em;#}
+{#        text-align: center;#}
+{#        cursor: pointer;#}
+{#        margin-top: 20px;#}
+{#    }#}
+{##}
+{#    .btn-pay:hover {#}
+{#        background-color: #0056b3;#}
+{#    }#}
+{#</style>#}
+{##}
+{#<div class="container mt-5">#}
+{#    <h1>Booking Summary</h1>#}
+{#    <table class="cart">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Image</th>#}
+{#                <th>Property</th>#}
+{#                <th>Price per Night</th>#}
+{#                <th>Nights</th>#}
+{#                <th>Total</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            {% for item in order.items.all %}#}
+{#            <tr class="row{% cycle "1" "2" %}">#}
+{#                <td>#}
+{#                    <img src="{% if item.property.image %}{{ item.property.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="{{ item.property.name }}">#}
+{#                </td>#}
+{#                <td>{{ item.property.name }}</td>#}
+{#                <td class="num">Le{{ item.price_per_night }}</td>#}
+{#                <td class="num">{{ item.nights }}</td>#}
+{#                <td class="num">Le{{ item.get_cost }}</td>#}
+{#            </tr>#}
+{#            {% endfor %}#}
+{#            {% if order.coupon %}#}
+{#            <tr class="subtotal">#}
+{#                <td>Subtotal</td>#}
+{#                <td colspan="3"></td>#}
+{#                <td class="num">#}
+{#                    Le{{ order.get_total_cost_before_discount|floatformat:2 }}#}
+{#                </td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>#}
+{#                    "{{ order.coupon.code }}" coupon#}
+{#                    ({{ order.discount }}% off)#}
+{#                </td>#}
+{#                <td colspan="3"></td>#}
+{#                <td class="num neg">#}
+{#                    - Le{{ order.get_discount|floatformat:2 }}#}
+{#                </td>#}
+{#            </tr>#}
+{#            {% endif %}#}
+{#            <tr class="total">#}
+{#                <td>Total</td>#}
+{#                <td colspan="3"></td>#}
+{#                <td class="num">#}
+{#                    Le{{ order.get_total_cost|floatformat:2 }}#}
+{#                </td>#}
+{#            </tr>#}
+{#        </tbody>#}
+{#    </table>#}
+{#    <form action="{% url 'payment:completed' %}" method="post">#}
+{#        <input type="submit" value="Pay now" class="btn-pay">#}
+{#        {% csrf_token %}#}
+{#    </form>#}
+{#</div>#}
+{##}
+{#    <script>#}
+{#    document.getElementById('payment-form').addEventListener('submit', function(event) {#}
+{#        event.preventDefault();#}
+{#        // Add your form submission logic here, e.g., using fetch or XMLHttpRequest#}
+{#        // For demonstration purposes, we'll simply redirect#}
+{#        window.location.href = "{% url 'payment:completed' %}";#}
+{#    });#}
+{#</script>#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% extends "base.html" %}#}
+{#{% load static %}#}
+{##}
+{#{% block title %}Pay for your Booking{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#<style>#}
+{#    .cart {#}
+{#        width: 100%;#}
+{#        border-collapse: collapse;#}
+{#        margin: 20px 0;#}
+{#        font-size: 1em;#}
+{#        text-align: left;#}
+{#    }#}
+{##}
+{#    .cart thead tr {#}
+{#        background-color: #f2f2f2;#}
+{#        color: #333;#}
+{#    }#}
+{##}
+{#    .cart th, .cart td {#}
+{#        padding: 12px 15px;#}
+{#        border: 1px solid #ddd;#}
+{#    }#}
+{##}
+{#    .cart tbody tr:nth-of-type(even) {#}
+{#        background-color: #f9f9f9;#}
+{#    }#}
+{##}
+{#    .cart tbody tr:hover {#}
+{#        background-color: #f1f1f1;#}
+{#    }#}
+{##}
+{#    .cart img {#}
+{#        width: 100px;#}
+{#        height: auto;#}
+{#        border-radius: 5px;#}
+{#    }#}
+{##}
+{#    .cart .num {#}
+{#        text-align: right;#}
+{#    }#}
+{##}
+{#    .cart .total {#}
+{#        font-weight: bold;#}
+{#        font-size: 1.2em;#}
+{#    }#}
+{##}
+{#    .cart .subtotal {#}
+{#        font-weight: bold;#}
+{#    }#}
+{##}
+{#    .btn-pay {#}
+{#        display: block;#}
+{#        width: 100%;#}
+{#        padding: 15px;#}
+{#        background-color: #007bff;#}
+{#        color: white;#}
+{#        border: none;#}
+{#        border-radius: 5px;#}
+{#        font-size: 1.2em;#}
+{#        text-align: center;#}
+{#        cursor: pointer;#}
+{#        margin-top: 20px;#}
+{#    }#}
+{##}
+{#    .btn-pay:hover {#}
+{#        background-color: #0056b3;#}
+{#    }#}
+{#</style>#}
+{##}
+{#<div class="container mt-5">#}
+{#    <h1>Booking Summary</h1>#}
+{#    <table class="cart">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Image</th>#}
+{#                <th>Property</th>#}
+{#                <th>Price per Night</th>#}
+{#                <th>Nights</th>#}
+{#                <th>Total</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            {% if order.items.exists %}#}
+{#                {% for item in order.items.all %}#}
+{#                <tr class="row{% cycle "1" "2" %}">#}
+{#                    <td>#}
+{#                        <img src="{% if item.property.image %}{{ item.property.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="{{ item.property.name }}">#}
+{#                    </td>#}
+{#                    <td>{{ item.property.name }}</td>#}
+{#                    <td class="num">Le{{ item.price_per_night }}</td>#}
+{#                    <td class="num">{{ item.nights }}</td>#}
+{#                    <td class="num">Le{{ item.get_cost }}</td>#}
+{#                </tr>#}
+{#                {% endfor %}#}
+{#                {% if order.coupon %}#}
+{#                <tr class="subtotal">#}
+{#                    <td>Subtotal</td>#}
+{#                    <td colspan="3"></td>#}
+{#                    <td class="num">#}
+{#                        Le{{ order.get_total_cost_before_discount|floatformat:2 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>#}
+{#                        "{{ order.coupon.code }}" coupon#}
+{#                        ({{ order.discount }}% off)#}
+{#                    </td>#}
+{#                    <td colspan="3"></td>#}
+{#                    <td class="num neg">#}
+{#                        - Le{{ order.get_discount|floatformat:2 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#                {% endif %}#}
+{#                <tr class="total">#}
+{#                    <td>Total</td>#}
+{#                    <td colspan="3"></td>#}
+{#                    <td class="num">#}
+{#                        Le{{ order.get_total_cost|floatformat:2 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#            {% else %}#}
+{#                <tr>#}
+{#                    <td colspan="5" class="text-center">No items in your booking.</td>#}
+{#                </tr>#}
+{#            {% endif %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#    <form action="{% url 'payment:completed' %}" method="post" id="payment-form">#}
+{#        <input type="submit" value="Pay now" class="btn-pay">#}
+{#        {% csrf_token %}#}
+{#    </form>#}
+{#</div>#}
+{##}
+{#<script>#}
+{#    document.getElementById('payment-form').addEventListener('submit', function(event) {#}
+{#        event.preventDefault();#}
+{#        // Add your form submission logic here, e.g., using fetch or XMLHttpRequest#}
+{#        // For demonstration purposes, we'll simply redirect#}
+{#        window.location.href = "{% url 'payment:completed' %}";#}
+{#    });#}
+{#</script>#}
+{##}
+{#{% endblock %}#}
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Checkout</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Stripe Checkout</h1>#}
+{#    <form action="{% url 'payment:process' %}" method="post">#}
+{#        {% csrf_token %}#}
+{#        <div>#}
+{#            <label for="name">Name:</label>#}
+{#            <input type="text" id="name" name="name" required>#}
+{#        </div>#}
+{#        <div>#}
+{#            <label for="email">Email:</label>#}
+{#            <input type="email" id="email" name="email" required>#}
+{#        </div>#}
+{#        <div>#}
+{#            <label for="phone">Phone:</label>#}
+{#            <input type="text" id="phone" name="phone" required>#}
+{#        </div>#}
+{#        <div>#}
+{#            <label for="address">Address:</label>#}
+{#            <input type="text" id="address" name="address" required>#}
+{#        </div>#}
+{#        <input type="hidden" name="house_slug" value="{{ house.slug }}">#}
+{#        <button type="submit" id="checkout-button">Checkout</button>#}
+{#    </form>#}
+{##}
+{#    <script src="https://js.stripe.com/v3/"></script>#}
+{#</body>#}
+{#</html>#}
+
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Checkout</title>#}
+{#    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">#}
+{#</head>#}
+{#<body>#}
+{#    <div class="container mt-5">#}
+{#        <h1 class="mb-4 text-center">Stripe Checkout</h1>#}
+{#        <form action="{% url 'payment:process' %}" method="post" class="needs-validation" novalidate>#}
+{#            {% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                <label for="name">Name:</label>#}
+{#                <input type="text" id="name" name="name" class="form-control" required>#}
+{#                <div class="invalid-feedback">Please enter your name.</div>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="email">Email:</label>#}
+{#                <input type="email" id="email" name="email" class="form-control" required>#}
+{#                <div class="invalid-feedback">Please enter a valid email address.</div>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="phone">Phone:</label>#}
+{#                <input type="text" id="phone" name="phone" class="form-control" required>#}
+{#                <div class="invalid-feedback">Please enter your phone number.</div>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="address">Address:</label>#}
+{#                <input type="text" id="address" name="address" class="form-control" required>#}
+{#                <div class="invalid-feedback">Please enter your address.</div>#}
+{#            </div>#}
+{#            <input type="hidden" name="house_slug" value="{{ house.slug }}">#}
+{#            <button type="submit" id="checkout-button" class="btn btn-primary btn-block">Checkout</button>#}
+{#        </form>#}
+{#    </div>#}
+{##}
+{#    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>#}
+{#    <script>#}
+{#        // Example starter JavaScript for disabling form submissions if there are invalid fields#}
+{#        (function() {#}
+{#            'use strict';#}
+{#            window.addEventListener('load', function() {#}
+{#                // Fetch all the forms we want to apply custom Bootstrap validation styles to#}
+{#                var forms = document.getElementsByClassName('needs-validation');#}
+{#                // Loop over them and prevent submission#}
+{#                var validation = Array.prototype.filter.call(forms, function(form) {#}
+{#                    form.addEventListener('submit', function(event) {#}
+{#                        if (form.checkValidity() === false) {#}
+{#                            event.preventDefault();#}
+{#                            event.stopPropagation();#}
+{#                        }#}
+{#                        form.classList.add('was-validated');#}
+{#                    }, false);#}
+{#                });#}
+{#            }, false);#}
+{#        })();#}
+{#    </script>#}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .checkout-container {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 700px;
+            margin: 80px auto;
+            z-index: 1; /* Ensure this is above the pseudo-element */
+        }
+        .checkout-container::before {
+            content: "";
+            background: url('https://via.placeholder.com/800x400') no-repeat center center;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            border-radius: 15px;
+            z-index: -1; /* Make sure this is behind the container content */
+        }
+        .checkout-container h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input {
+            border-radius: 25px;
+            padding: 15px;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .invalid-feedback {
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <h2 class="mb-4">Complete Your Booking</h2>
+        <form action="{% url 'payment:process' %}" method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+                <div class="invalid-feedback">Please enter your full name.</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" class="form-control" required>
+                <div class="invalid-feedback">Please enter your phone number.</div>
+            </div>
+            <div class="form-group">
+                <label for="address">Street Address</label>
+                <input type="text" id="address" name="address" class="form-control" required>
+                <div class="invalid-feedback">Please enter your street address.</div>
+            </div>
+            <input type="hidden" name="house_slug" value="{{ house.slug }}">
+            <button type="submit" id="checkout-button" class="btn btn-primary">Proceed to Payment</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Bootstrap form validation
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>
+
+

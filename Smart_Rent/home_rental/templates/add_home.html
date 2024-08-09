@@ -1,0 +1,221 @@
+{#{% extends "base.html" %}#}
+{#{% load form_tags %}#}
+{##}
+{##}
+{#{% block title %}#}
+{#Add Home#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#<div class="container mt-5">#}
+{#    <form method="post" enctype="multipart/form-data" class="row g-3">#}
+{#        {% csrf_token %}#}
+{#        <div class="col-md-6">#}
+{#            <label for="id_First_Name" class="form-label">First Name</label>#}
+{#            {{ form.First_Name|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-md-6">#}
+{#            <label for="id_Last_Name" class="form-label">Last Name</label>#}
+{#            {{ form.Last_Name|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-md-6">#}
+{#            <label for="id_Email" class="form-label">Email</label>#}
+{#            {{ form.Email|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-12">#}
+{#            <label for="id_Street1" class="form-label">Address: Street 1</label>#}
+{#            {{ form.Street1|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-12">#}
+{#            <label for="id_Street2" class="form-label">Address: Street 2</label>#}
+{#            {{ form.Street2|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-md-6">#}
+{#            <label for="id_City" class="form-label">City</label>#}
+{#            {{ form.City|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-md-4">#}
+{#            <label for="id_State" class="form-label">State</label>#}
+{#            {{ form.State|add_class:"form-control" }}#}
+{#        </div>#}
+{#       <div class="col-md-2">#}
+{#            <label for="id_Pincode" class="form-label">Pincode</label>#}
+{#           {{ form.Pincode|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-md-6">#}
+{#            <label for="id_Contact" class="form-label">Contact Number</label>#}
+{#            {{ form.Contact|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-md-3">#}
+{#            <label for="id_Visiting_Start" class="form-label">Visiting Start Time</label>#}
+{#            {{ form.Visiting_Start|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-md-3">#}
+{#            <label for="id_Visiting_End" class="form-label">Visiting End Time</label>#}
+{#            {{ form.Visiting_End|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-md-4">#}
+{#            <label for="id_Visiting_day" class="form-label">Visiting Days</label>#}
+{#            {{ form.Visiting_day|add_class:"form-select" }}#}
+{#        </div>#}
+{#        <div class="col-md-4">#}
+{#            <label for="id_Visiting_day" class="form-label">Rent / Sale</label>#}
+{#            {{ form.Gate_closing_time|add_class:"form-select" }}#}
+{#        </div>#}
+{#        <div class="col-md-4">#}
+{#            <label for="id_Rent" class="form-label">Amount (per year)</label>#}
+{#            {{ form.Rent|add_class:"form-control" }}#}
+{#        </div>#}
+{#       <div class="col-md-4">#}
+{#            <label for="id_Number_Of_People_Allowed" class="form-label">Number of People Allowed</label>#}
+{#            {{ form.Number_Of_People_Allowed|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-12">#}
+{#            <div class="col-md-6">#}
+{#                <label for="id_First_Name" class="form-label">Feature 1</label>#}
+{#                {{ form.Feature2|add_class:"form-control" }}#}
+{#            </div>#}
+{#            <div class="col-md-6">#}
+{#                <label for="id_First_Name" class="form-label">Feature 2</label>#}
+{#                {{ form.Feature2|add_class:"form-control" }}#}
+{#            </div>#}
+{#            <label for="id_Description" class="form-label">Description</label>#}
+{#           {{ form.Description|add_class:"form-control" }}#}
+{#        </div>#}
+{#        <div class="col-12">#}
+{#            <label for="id_Image" class="form-label">Image Upload</label>#}
+{#            {{ form.Image|add_class:"form-control-file" }}#}
+{#        </div>#}
+{#        <div class="col-12">#}
+{#            <button type="submit" class="btn btn-primary">Submit</button>#}
+{#        </div>#}
+{#    </form>#}
+{#<br>#}
+{#</div>#}
+{##}
+{##}
+{#{% endblock %}#}
+{##}
+
+
+{% extends "base.html" %}
+{% load form_tags %}
+
+{% block title %}
+Add Home
+{% endblock %}
+
+{% block content %}
+<style>
+    .form-container {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-label {
+        font-weight: bold;
+    }
+    .form-control, .form-select {
+        border-radius: 20px;
+    }
+    .form-control-file {
+        border: 1px solid #ced4da;
+        border-radius: 20px;
+    }
+    .btn-primary {
+        border-radius: 20px;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data" class="row g-3">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <label for="id_First_Name" class="form-label">First Name</label>
+                {{ form.First_Name|add_class:"form-control" }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_Last_Name" class="form-label">Last Name</label>
+                {{ form.Last_Name|add_class:"form-control" }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_Email" class="form-label">Email</label>
+                {{ form.Email|add_class:"form-control" }}
+            </div>
+            <div class="col-12">
+                <label for="id_Street1" class="form-label">Address: Street 1</label>
+                {{ form.Street1|add_class:"form-control" }}
+            </div>
+            <div class="col-12">
+                <label for="id_Street2" class="form-label">Address: Street 2</label>
+                {{ form.Street2|add_class:"form-control" }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_City" class="form-label">City</label>
+                {{ form.City|add_class:"form-control" }}
+            </div>
+            <div class="col-md-4">
+                <label for="id_State" class="form-label">State</label>
+                {{ form.State|add_class:"form-control" }}
+            </div>
+           <div class="col-md-2">
+                <label for="id_Pincode" class="form-label">Pincode</label>
+               {{ form.Pincode|add_class:"form-control" }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_Contact" class="form-label">Contact Number</label>
+                {{ form.Contact|add_class:"form-control" }}
+            </div>
+            <div class="col-md-3">
+                <label for="id_Visiting_Start" class="form-label">Visiting Start Time</label>
+                {{ form.Visiting_Start|add_class:"form-control" }}
+            </div>
+            <div class="col-md-3">
+                <label for="id_Visiting_End" class="form-label">Visiting End Time</label>
+                {{ form.Visiting_End|add_class:"form-control" }}
+            </div>
+            <div class="col-md-4">
+                <label for="id_Visiting_day" class="form-label">Visiting Days</label>
+                {{ form.Visiting_day|add_class:"form-select" }}
+            </div>
+            <div class="col-md-4">
+                <label for="id_Rent" class="form-label">Amount (per year)</label>
+                {{ form.Rent|add_class:"form-control" }}
+            </div>
+           <div class="col-md-4">
+                <label for="id_Number_Of_People_Allowed" class="form-label">Number of People Allowed</label>
+                {{ form.Number_Of_People_Allowed|add_class:"form-control" }}
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_Feature1" class="form-label">Feature 1</label>
+                        {{ form.Feature1|add_class:"form-control" }}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_Feature2" class="form-label">Feature 2</label>
+                        {{ form.Feature2|add_class:"form-control" }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="id_Image" class="form-label">Image Upload</label>
+                {{ form.Image|add_class:"form-control-file" }}
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    <br>
+</div>
+{% endblock %}

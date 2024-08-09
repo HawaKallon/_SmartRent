@@ -1,0 +1,38 @@
+{##}
+{#<div class="col-sm-6 col-md-4 col-lg-3">#}
+{#    <div class="card" >#}
+{#        <img src="{{data.Image.url}}" class="card-img-top img-fluid" style="max-height: 200px; object-fit: cover;" alt="image">#}
+{#        <div class="card-body">#}
+{#          <h5 class="card-title">Rs {{data.Rent}}   </h5>#}
+{#          <p class="card-text">{{data.Street1}} {{data.Street2}} {{data.City}} {{data.State}} </p>#}
+{#          <a href="{% url 'detail_page' data.slug %}" class="btn btn-primary">More Details</a>#}
+{#        </div>#}
+{#      </div>#}
+{#</div>#}
+{##}
+{##}
+
+
+<article class="property-card">
+  <div class="property-content">
+    <section class="image-container" style="width: 90%">
+      <img src="{{ data.Image.url }}" alt="Mediterania House exterior view" class="property-image" style="width: 150%" />
+    </section>
+    <section class="property-details">
+      <h2 class="property-title">{{ data.First_Name }} {{ data.Last_Name }}</h2>
+      <p class="property-price" >Le {{ data.Rent }}</p>
+      <div class="property-info">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9c4ee8a788e30af7e3afdf1419d05ccc2eec75f15d2e34f779f69282fe489126?apiKey=8b727c6231734b809e9d11637857cb35&" alt="Location icon" class="info-icon" />
+        <p class="info-text">{{ data.Street1}}, {{ data.Street2 }}</p>
+      </div>
+      <div class="property-info">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ad21aae9564768c742283733913d969f752b5e7fe2045ff9728f71792d210b39?apiKey=8b727c6231734b809e9d11637857cb35&" alt="Agent icon" class="info-icon" />
+        <p class="info-text">{{ data.Contact}}</p>
+      </div>
+      <div class="property-info">
+         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/10df14410ddf16a9d1f95ad466e197b74ea668fd0218c839796c53f481137d97?apiKey=8b727c6231734b809e9d11637857cb35&" alt="Area icon" class="info-icon" />
+       <a href="{% url 'home_rental:detail_page' data.slug %}" class="btn btn-primary">More Details</a>
+      </div>
+    </section>
+  </div>
+</article>

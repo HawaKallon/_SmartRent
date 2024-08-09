@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  @media (max-width: 767.98px) {
+    .login-section {
+      margin-bottom: 10%;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container-fluid h-100 bg-white font-family-karla">
+  <div class="row h-100">
+    <!-- Login Section -->
+    <div class="col-md-6 d-flex flex-column justify-content-center login-section">
+      <div class="d-flex justify-content-center pt-5">
+        <!-- Replace with your logo or brand image -->
+        <a href="#" class="p-4 text-xl font-bold text-black bg-black">SmartRent</a>
+      </div>
+
+      <div class="px-4 pt-8 pt-md-8 pb-4 mx-auto">
+        <h1 class="text-center ">Welcome.</h1>
+
+        <form method="post" class="pt-3" style="width: 100%; line-height: 240%">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+          <input
+            type="submit"
+            value="Log In"
+            class="btn btn-lg btn-block btn-primary mt-4"
+          />
+        </form>
+
+        <div class="pt-4 pb-4 text-center">
+          <p>Don't have an account? <a href="{% url 'home_rental:signin_page' %}" class="font-weight-bold">Register here.</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="col-md-6 d-none d-md-block">
+      <!-- Replace with your image -->
+      <img class="img-fluid h-100" src="{% static 'img/bg.jpg' %}" alt="">
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

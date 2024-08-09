@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block stylesheet %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+    }
+
+    header {
+            {
+            #background: #007bff;
+            #
+        }
+
+        color: #0f0f0f;
+        padding: 2rem 0;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    section {
+        padding: 2rem;
+        background: #fff;
+        margin: 1rem auto;
+        max-width: 800px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    section h2 {
+        margin-top: 0;
+        font-size: 1.75rem;
+        color: #003366;
+    }
+
+    .team-member {
+        border: 1px solid #ddd;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+    }
+
+    .team-member h3 {
+        margin-top: 0;
+        color: #003366;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul li {
+        background: #e0e0e0;
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+
+    blockquote {
+        background: #e0e0e0;
+        border-left: 10px solid #003366;
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 8px;
+        font-style: italic;
+    }
+
+    blockquote p {
+        margin: 0;
+    }
+
+    footer {
+        background: #003366;
+        color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+
+    footer p {
+        margin: 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>About SmartRent</h1>
+</header>
+
+<section id="mission-statement">
+    <h2>Our Mission</h2>
+    <p>To revolutionize the rental experience with convenience and trust, making renting easier and more accessible for
+        everyone.</p>
+</section>
+
+<section id="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-members">
+        <div class="team-member">
+            <h3>Hawa Kallon</h3>
+            <p><strong>Position:</strong> CEO</p>
+            <p>Hawa is passionate about creating innovative solutions in the rental market, bringing years of experience
+                in tech startups to SmartRent.</p>
+        </div>
+        <div class="team-member">
+            <h3>Thomasia O.C Lewis</h3>
+            <p><strong>Position:</strong> CTO</p>
+            <p>Thomasia is a seasoned technologist committed to building a robust and user-friendly platform for our
+                customers.</p>
+        </div>
+
+        <div class="team-member">
+            <h3>Gamaliel A Ayeni</h3>
+            <p><strong>Position:</strong> CTO</p>
+            <p>Gamaliel is a seasoned technologist committed to building a robust and user-friendly platform for our
+                customers.</p>
+        </div>
+        <!-- Add more team members as needed -->
+    </div>
+</section>
+
+<section id="vision">
+    <h2>Our Vision</h2>
+    <p>As a startup poised to launch, our vision is to become the go-to platform for rentals, offering a seamless and
+        efficient experience for both renters and owners. We aim to leverage technology to streamline the rental
+        process, ensuring transparency, trust, and convenience for all parties involved.</p>
+</section>
+
+<section id="values">
+    <h2>Our Values</h2>
+    <ul>
+        <li>Customer-Centricity: Our customers' needs and satisfaction are at the forefront of our business.</li>
+        <li>Innovation: We strive to innovate continuously, improving our platform to meet and exceed user expectations.
+        </li>
+        <li>Integrity: We operate with honesty and transparency in all our dealings.</li>
+        <li>Sustainability: We are committed to sustainable practices and contributing positively to the environment.
+        </li>
+        <!-- Add more values as needed -->
+    </ul>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <p>As we prepare to launch, SmartRent is developing a suite of services designed to meet diverse rental needs:</p>
+    <ul>
+        <li><strong>Home Rentals:</strong> Reliable and affordable vehicles for personal and business use.</li>
+        <li><strong>Office Rentals:</strong> A curated selection of vacation homes and apartments for your perfect
+            getaway.</li>
+        <li><strong>Land Rentals:</strong> High-quality equipment for construction, landscaping, and more.</li>
+        <li><strong>Vacation Rentals:</strong> Comprehensive event rental solutions, from tents to tables, to make your
+            event successful.</li>
+    </ul>
+    <p>Our platform will offer a user-friendly interface to make finding and booking rentals simple and convenient.</p>
+</section>
+
+<section id="testimonials">
+    <h2>What People Say About Us</h2>
+    <p>As we gear up for our launch, we have received encouraging feedback from our beta testers:</p>
+    <blockquote>
+        <p>“SmartRent is set to change the rental market with its innovative approach and customer-first mentality.” -
+            Beta Tester A</p>
+    </blockquote>
+    <blockquote>
+        <p>“The platform is intuitive and easy to use. I can't wait for the full launch!” - Beta Tester B</p>
+    </blockquote>
+    <!-- Add more testimonials as needed -->
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Email:</strong> info@rentall.com</p>
+    <p><strong>Phone:</strong> +23234 000 000</p>
+    <p><strong>Address:</strong> 56, Imaat, Freetown, Sierra Leone.</p>
+    <p>If you have any inquiries or need support, please don't hesitate to reach out to us. We are here to help!</p>
+</section>
+
+<section id="careers">
+    <h2>Careers at SmartRent</h2>
+    <p>Are you passionate about transforming the rental industry? Join our team at SmartRent and be part of an exciting
+        journey from the ground up.</p>
+    <p>We offer dynamic career opportunities in various fields, including technology, customer service, and marketing.
+        Our team members enjoy a collaborative environment, growth opportunities, and the chance to make a real impact.
+    </p>
+    <p>Visit our careers page to learn more about current openings and how to apply.</p>
+</section>
+
+<section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div>
+        <h3>When will SmartRent launch?</h3>
+        <p>We are working hard to launch SmartRent soon. Stay tuned for updates on our official launch date.</p>
+    </div>
+    <div>
+        <h3>How can I become a beta tester?</h3>
+        <p>If you are interested in becoming a beta tester, please contact us at beta@rentall.com. We appreciate your
+            interest and support!</p>
+    </div>
+    <div>
+        <h3>How can I contact customer support?</h3>
+        <p>You can reach our customer support team via email at support@rentall.com or by phone at +1 234 567 890. We
+            are here to assist you.</p>
+    </div>
+    <!-- Add more FAQs as needed -->
+</section>
+
+<footer>
+    <p>&copy; SmartRent. All rights reserved.</p>
+</footer>
+{% endblock %}
